@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, Platform, Pressable } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -13,34 +13,44 @@ export default function HomeScreen() {
         <Image
           source={require('@/assets/images/santander.png')}
           style={styles.reactLogo}
+
         />
       }>
+     
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Bem vindo </ThemedText>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">para realizar este login, utilize os dados de acesso do app Santander</ThemedText>
-        <ThemedText>
-          <ThemedText type="defaultSemiBold">CPF</ThemedText> 
-{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: ':'
-            })}
-          </ThemedText>000.000.000-01{' '}
 
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">
+          Para realizar este login, utilize os dados de acesso do app Santander
         </ThemedText>
       </ThemedView>
+
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">CPF</ThemedText>
+        <ThemedText>000.000.000-01</ThemedText>
+      </ThemedView>
+
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Senha</ThemedText>
-        <ThemedText>
-          ...
-        </ThemedText>
+        <ThemedText>******</ThemedText>
       </ThemedView>
+
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Entrar</ThemedText>
+        <Pressable onPress={() => console.log('Entrando...')}>
+          <ThemedText type="subtitle" style={styles.loginButton}>Entrar</ThemedText>
+        </Pressable>
+      </ThemedView>
+
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText>
+          Instrução: {Platform.select({
+            ios: 'cmd + d',
+            android: 'cmd + m',
+            web: 'use o menu de ferramentas'
+          })}
+        </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
   );
@@ -62,5 +72,12 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: 'absolute',
+  },
+  loginButton: {
+    backgroundColor: 'red',
+    padding: 10,
+    borderRadius: 5,
+    textAlign: 'center',
+    color: '#fff',
   },
 });
