@@ -1,6 +1,4 @@
 import { Image, StyleSheet, Platform, Pressable } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -13,10 +11,9 @@ export default function HomeScreen() {
         <Image
           source={require('@/assets/images/santander.png')}
           style={styles.reactLogo}
-
         />
-      }>
-     
+      }
+    >
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Bem vindo </ThemedText>
       </ThemedView>
@@ -48,7 +45,7 @@ export default function HomeScreen() {
           Instrução: {Platform.select({
             ios: 'cmd + d',
             android: 'cmd + m',
-            web: 'use o menu de ferramentas'
+            web: 'use o menu de ferramentas',
           })}
         </ThemedText>
       </ThemedView>
@@ -81,3 +78,4 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
 });
+
